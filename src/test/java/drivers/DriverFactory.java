@@ -6,29 +6,34 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import config.ConfigReader;
 
 public class DriverFactory {
-    private static final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+    private static WebDriver driver;
 
     public static WebDriver getDriver() {
-        return driver.get();
+        if (driver == null) {
+            initializeDriver();
+        }
+        return driver;
     }
 
     public static void initializeDriver() {
         String browser = ConfigReader.get("browser");
         switch (browser.toLowerCase()) {
             case "chrome":
-                driver.set(new ChromeDriver());
+                driver = new ChromeDriver();
                 break;
             case "firefox":
-                driver.set(new FirefoxDriver());
+                driver = new FirefoxDriver();
                 break;
             default:
                 throw new RuntimeException("Unsupported browser: " + browser);
         }
-        getDriver().manage().window().maximize();
+        driver.manage().window().maximize();
     }
 
     public static void quitDriver() {
-        getDriver().quit();
-        driver.remove();
+        if (driver != null) {
+            driver.quit();
+            driver = null;
+        }
     }
 }

@@ -7,7 +7,7 @@ Feature: User Login
   Background:
     Given I am on the OrangeHRM login page
 
-  @Positive
+  @Positive @CloseBrowser
   Scenario Outline: Successful login with valid credentials
     When I enter username "<username>" and password "<password>"
     And I click on the login button
@@ -18,7 +18,7 @@ Feature: User Login
       | Admin    | admin123  |
       | admin    | admin123  |
 
-  @Negative
+  @Negative @CloseBrowser
   Scenario Outline: Login fails with invalid credentials
     When I enter username "<username>" and password "<password>"
     And I click on the login button

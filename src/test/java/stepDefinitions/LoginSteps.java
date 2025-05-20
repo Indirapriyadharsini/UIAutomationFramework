@@ -1,5 +1,6 @@
 package stepDefinitions;
 
+import com.aventstack.extentreports.Status;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
@@ -9,6 +10,7 @@ import org.testng.Assert;
 import pages.LoginPage;
 import pages.BasePage;
 import utils.WaitUtils;
+import static hooks.ExtentHooks.getTest;
 
 public class LoginSteps {
 
@@ -19,11 +21,13 @@ public class LoginSteps {
     @Given("I am on the OrangeHRM login page")
     public void i_am_on_the_orangehrm_login_page() {
         loginPage.waitForLoginPageToLoad();
+        getTest().log(Status.INFO, "User navigated to the login page");
     }
 
     @When("I enter username {string} and password {string}")
     public void i_enter_username_and_password(String username, String password) {
         loginPage.login(username, password);
+        getTest().log(Status.INFO, "User entered username: " + username + " and password: " + password);
     }
 
     @And("I click on the login button")
@@ -34,7 +38,7 @@ public class LoginSteps {
     @Then("I should be redirected to the dashboard page")
     public void i_should_be_redirected_to_the_dashboard_page() {
         Assert.assertTrue(basePage.isDashboardPageDisplayed(), "Dashboard page is not displayed");
-        System.out.println("Dashboard page is displayed");
+        getTest().log(Status.PASS, "User successfully navigated to the dashboard");
     }
 
     @Then("I should see an error message {string}")
@@ -42,6 +46,6 @@ public class LoginSteps {
         // Wait for the error message to be visible
         WaitUtils.waitForVisibility(loginPage.driver, loginPage.errorMessageElement);
         Assert.assertEquals(loginPage.getErrorMessage(), errorMessage, "Error message does not match");
-        System.out.println("Error message is displayed: " + errorMessage);
+        getTest().log(Status.INFO, "Error message was displayed for invalid login attempt");
     }
 }
