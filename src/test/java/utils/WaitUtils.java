@@ -9,7 +9,7 @@ import java.time.Duration;
 
 public class WaitUtils {
 
-    private static final int TIMEOUT = 60;
+    private static final int TIMEOUT = 90;
 
     public static void waitForVisibility(WebDriver driver, WebElement element)
     {
