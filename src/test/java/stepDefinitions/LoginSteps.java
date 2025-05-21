@@ -16,7 +16,7 @@ import pages.BasePage;
 import utils.ElementUtils;
 import utils.ScreenshotUtils;
 
-import static hooks.ExtentHooks.getTest;
+import static utils.ExtentReportManager.getTest;
 
 public class LoginSteps {
 
