@@ -39,7 +39,7 @@ public class LoginSteps {
         loginPage.clickLoginButton();
     }
 
-    @Then("I should be redirected to the dashboard page")
+   @Then("I should be redirected to the dashboard page")
     public void i_should_be_redirected_to_the_dashboard_page() {
         ElementUtils.waitForElementToBeVisible(loginPage.getDriver(), loginPage.dashboardPageElement);
         Assert.assertTrue(loginPage.isDashboardPageDisplayed(), "Dashboard page is not displayed");

@@ -13,7 +13,7 @@ public class ExtentReportManager {
     static {
         ExtentSparkReporter sparkReporter = new ExtentSparkReporter("test-output/ExtentReport.html");
         sparkReporter.config().setDocumentTitle("UI Automation Report");
-        sparkReporter.config().setReportName("Login Tests");
+        sparkReporter.config().setReportName("UI Tests");
         sparkReporter.config().setTheme(Theme.STANDARD);
 
         extent = new ExtentReports();

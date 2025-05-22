@@ -34,6 +34,7 @@ package drivers;
                     if (driver.get() != null) {
                         driver.get().quit();
                         driver.remove();
+                        //driver = null;
                     }
                 }
             }

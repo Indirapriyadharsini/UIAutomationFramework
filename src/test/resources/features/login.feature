@@ -9,14 +9,14 @@ Feature: User Login
 
   @Positive @CloseBrowser
   Scenario Outline: Successful login with valid credentials
-    When I enter username "<username>" and password "<password>"
-    And I click on the login button
-    Then I should be redirected to the dashboard page
+  When I enter username "<username>" and password "<password>"
+  And I click on the login button
+  Then I should be redirected to the dashboard page
 
-    Examples:
-      | username | password  |
-      | Admin    | admin123  |
-      | admin    | admin123  |
+  Examples:
+   | username | password  |
+   | Admin    | admin123  |
+   | admin    | admin123  |
 
   @Negative @CloseBrowser
   Scenario Outline: Login fails with invalid credentials
@@ -26,6 +26,6 @@ Feature: User Login
 
     Examples:
       | username | password   | error_message                        |
-      | Admin    | wrongpass  | Invalid credentials                  |
+      | Admin    | wrongpass   | Invalid credentials                  |
       | wronguser| admin123   | Invalid credentials                  |
 

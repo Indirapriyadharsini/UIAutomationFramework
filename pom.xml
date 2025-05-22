@@ -62,7 +62,12 @@
             <artifactId>extentreports</artifactId>
             <version>5.1.1</version>
         </dependency>
-
+        <!-- Ashot -->
+        <dependency>
+            <groupId>ru.yandex.qatools.ashot</groupId>
+            <artifactId>ashot</artifactId>
+            <version>1.5.4</version>
+        </dependency>
 
     </dependencies>
 
